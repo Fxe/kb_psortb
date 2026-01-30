@@ -82,6 +82,9 @@ class kb_psortb:
 
         dfu_get_result = self.dfu.get_objects({'object_refs': [f'{params["workspace_id"]}/{params["input_genome"]}']})
 
+        print(dfu_get_result['data'][0])
+        print(dfu_get_result['data'][0].keys())
+
         genome_object = dfu_get_result['data'][0]
         features = {}
         for f in genome_object['features']:
