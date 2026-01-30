@@ -82,14 +82,13 @@ class kb_psortb:
 
         dfu_get_result = self.dfu.get_objects({'object_refs': [f'{params["workspace_id"]}/{params["input_genome"]}']})
 
-        print(dfu_get_result['data'][0])
-        print(dfu_get_result['data'][0].keys())
+        # print(dfu_get_result['data'][0])
+        print(dfu_get_result['data'][0]['data'].keys())
 
-        genome_object = dfu_get_result['data'][0]
+        genome_object = dfu_get_result['data'][0]['data']
 
         features = {}
 
-        """
         for f in genome_object['features']:
             protein_translation = f.get('protein_translation')
             feature_id = f['id']
@@ -106,7 +105,6 @@ class kb_psortb:
                 fh.write(f'{s}\n')
 
         print('/tmp/input_genome.faa created')
-        """
 
         report = KBaseReport(self.callback_url)
         report_info = report.create({'report': {'objects_created': [],
