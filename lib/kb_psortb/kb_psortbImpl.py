@@ -56,6 +56,30 @@ class kb_psortb:
         # return variables are: output
         #BEGIN run_kb_psortb
 
+        print(params)
+        print(ctx)
+
+        # Build cmd
+        cmd = [
+            '/usr/local/psortb/bin/psortx',
+            #species_type,
+            #'-o', 'long',
+            #'--outfile', f'{job_dir}/results.tsv',
+            #'--seq', f'{job_dir}/protein.faa'
+        ]
+        print(' '.join(cmd))
+        import subprocess
+        result = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True
+        )
+        print(result)
+
+        print(result.returncode)
+        print(result.stdout.strip() if result.stdout else '')
+        print(result.stderr.strip() if result.stderr else '')
+
         dfu_get_result = self.dfu.get_objects({'object_refs': [params['input_genome']]})
 
         print(dfu_get_result)

@@ -41,6 +41,8 @@ ADD requirements_kbase.txt /tmp/requirements_kbase.txt
 RUN uv pip install -r /tmp/requirements_kbase.txt
 
 # -----------------------------------------
+# add a modified version that allows outputfile specification
+COPY ./psortx /usr/local/psortb/bin/psortx
 
 COPY ./ /kb/module
 RUN mkdir -p /kb/module/work
