@@ -6,3 +6,7 @@ lib/kb_psortb/kb_psortbServer.py
 
 test_local
 sdk.cfg
+
+bin/
+scripts/start_server.sh
+test/run_tests.sh

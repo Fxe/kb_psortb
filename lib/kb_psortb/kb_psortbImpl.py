@@ -26,7 +26,7 @@ class kb_psortb:
     ######################################### noqa
     VERSION = "0.0.1"
     GIT_URL = "git@github.com:Fxe/kb_psortb.git"
-    GIT_COMMIT_HASH = "cf1484fab5e0e74efdfeeb3aaeb5f8533960d222"
+    GIT_COMMIT_HASH = "e8ca60b63e1d9b0800a1f31d96fce7a6d692c2df"
 
     #BEGIN_CLASS_HEADER
     #END_CLASS_HEADER
@@ -88,7 +88,7 @@ class kb_psortb:
         genome_object = dfu_get_result['data'][0]
 
         features = {}
-        
+
         """
         for f in genome_object['features']:
             protein_translation = f.get('protein_translation')

@@ -63,5 +63,8 @@ class kb_psortbTest(unittest.TestCase):
         #
         # Check returned data with
         # self.assertEqual(ret[...], ...) or other unittest methods
-        ret = self.serviceImpl.run_kb_psortb(self.ctx, {'workspace_name': self.wsName,
-                                                             'parameter_1': 'Hello World!'})
+        ret = self.serviceImpl.run_kb_psortb(self.ctx, {
+            'workspace_name': 'filipeliu:narrative_1769756447907',
+            'workspace_id': 77058,
+            'input_genome': 'GCF_000005845.2',
+            'org_type': 1111})
