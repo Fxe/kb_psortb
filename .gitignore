@@ -1,4 +1,5 @@
 .idea
+@eaDir/
 
 test_local
 sdk.cfg

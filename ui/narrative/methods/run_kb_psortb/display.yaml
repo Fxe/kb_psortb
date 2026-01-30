@@ -1,14 +1,14 @@
 #
 # define display information
 #
-name: Method Name Here
+name: Annotate Genome with PSORTb
 
 tooltip: |
     Perform some kind of method
 
 screenshots: []
 
-icon: icon.png
+icon: psortb.gif
 
 #
 # define a set of similar apps that might be useful to the user
@@ -24,9 +24,15 @@ suggestions:
 # Configure the display and description of parameters
 #
 parameters :
-    parameter_1 :
+    input_genome :
         ui-name : |
-            First parameter
+            Genome
+        short-hint : |
+            Genome object to annotate
+
+    org_type :
+        ui-name : |
+            Choose an organism type
         short-hint : |
             The first parameter
         long-hint  : |
