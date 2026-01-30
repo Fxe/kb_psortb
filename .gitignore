@@ -1,5 +1,8 @@
 .idea
 @eaDir/
 
+lib/kb_psortb/kb_psortbImpl.py.bak*
+lib/kb_psortb/kb_psortbServer.py
+
 test_local
 sdk.cfg
