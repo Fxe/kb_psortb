@@ -82,11 +82,28 @@ class kb_psortb:
 
         dfu_get_result = self.dfu.get_objects({'object_refs': [f'{params["workspace_id"]}/{params["input_genome"]}']})
 
-        print(dfu_get_result)
+        genome_object = dfu_get_result['data'][0]
+        features = {}
+        for f in genome_object['features']:
+            protein_translation = f.get('protein_translation')
+            feature_id = f['id']
+            if protein_translation:
+                print(feature_id, protein_translation)
+                if feature_id not in features:
+                    features[feature_id] = protein_translation
+                else:
+                    raise ValueError('Duplicate feature id:', feature_id)
+
+        with open('/tmp/input_genome.faa', 'w') as fh:
+            for i, s in features.items():
+                fh.write(f'>{i}\n')
+                fh.write(f'{s}\n')
+
+        print('/tmp/input_genome.faa created')
 
         report = KBaseReport(self.callback_url)
-        report_info = report.create({'report': {'objects_created':[],
-                                                'text_message': params['parameter_1']},
+        report_info = report.create({'report': {'objects_created': [],
+                                                'text_message': params['input_genome']},
                                                 'workspace_name': params['workspace_name']})
         output = {
             'report_name': report_info['name'],
