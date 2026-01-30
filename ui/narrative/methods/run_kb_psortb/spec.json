@@ -3,8 +3,8 @@
     "authors": [
         "filipeliu"
     ],
-    "contact": "",
-    "categories": ["active"],
+    "contact": "fliu@anl.gov",
+    "categories": ["active", "annotation"],
     "widgets": {
         "input": null,
         "output": null

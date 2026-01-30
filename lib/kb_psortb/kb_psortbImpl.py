@@ -80,7 +80,7 @@ class kb_psortb:
         print(result.stdout.strip() if result.stdout else '')
         print(result.stderr.strip() if result.stderr else '')
 
-        dfu_get_result = self.dfu.get_objects({'object_refs': [params['input_genome']]})
+        dfu_get_result = self.dfu.get_objects({'object_refs': [f'{params["workspace_id"]}/{params["input_genome"]}']})
 
         print(dfu_get_result)
 
