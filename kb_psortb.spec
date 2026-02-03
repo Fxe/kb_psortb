@@ -13,5 +13,5 @@ module kb_psortb {
     */
     funcdef run_kb_psortb(mapping<string,UnspecifiedObject> params) returns (ReportResults output) authentication required;
 
-    funcdef annotate_proteins(mapping<string,string> proteins) returns (string) authentication required;
+    funcdef annotate_proteins(mapping<string,string> proteins, string org_param) returns (string) authentication required;
 };

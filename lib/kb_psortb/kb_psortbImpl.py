@@ -3,6 +3,7 @@
 import logging
 import os
 
+import subprocess
 from installed_clients.KBaseReportClient import KBaseReport
 from installed_clients.GenomeFileUtilClient import GenomeFileUtil
 from installed_clients.DataFileUtilClient import DataFileUtil
@@ -26,16 +27,9 @@ class kb_psortb:
     ######################################### noqa
     VERSION = "0.0.1"
     GIT_URL = "git@github.com:Fxe/kb_psortb.git"
-    GIT_COMMIT_HASH = "e4fe297023861033f71d79a92a4eb504058e494e"
+    GIT_COMMIT_HASH = "f01cf7f015c5ec7f2b2eb25d63cf07bca4a69d40"
 
     #BEGIN_CLASS_HEADER
-
-    def annotate_proteins(self, ctx, params):
-
-
-
-        return params
-
     #END_CLASS_HEADER
 
     # config contains contents of config file in a hash or None if it couldn't
@@ -102,7 +96,7 @@ class kb_psortb:
             '--seq', '/tmp/input_genome.faa'
         ]
         print(' '.join(cmd))
-        import subprocess
+
         result = subprocess.run(
             cmd,
             capture_output=True,
@@ -136,20 +130,48 @@ class kb_psortb:
         # return the results
         return [output]
 
-    def annotate_proteins(self, ctx, proteins):
+    def annotate_proteins(self, ctx, proteins, org_param):
         """
         :param proteins: instance of mapping from String to String
+        :param org_param: instance of String
         :returns: instance of String
         """
         # ctx is the context object
         # return variables are: returnVal
         #BEGIN annotate_proteins
 
-        print(ctx)
-        print(proteins)
+        with open('/tmp/input_genome.faa', 'w') as fh:
+            for i, s in proteins.items():
+                fh.write(f'>{i}\n')
+                fh.write(f'{s}\n')
 
-        returnVal = "hello ?"
-        print(returnVal)
+        # Build cmd
+        cmd = [
+            '/usr/local/psortb/bin/psortx',
+            org_param,
+            '-o', 'long',
+            '--outfile', '/tmp/results.tsv',
+            '--seq', '/tmp/input_genome.faa'
+        ]
+        print(' '.join(cmd))
+
+        result = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True
+        )
+
+        print(result)
+
+        print(result.returncode)
+        print(result.stdout.strip() if result.stdout else '')
+        print(result.stderr.strip() if result.stderr else '')
+
+        returnVal = ""
+
+        if os.path.exists('/tmp/results.tsv'):
+            with open('/tmp/results.tsv', 'r') as fh:
+                returnVal = fh.read()
 
         #END annotate_proteins
 
@@ -158,7 +180,7 @@ class kb_psortb:
             raise ValueError('Method annotate_proteins return value ' +
                              'returnVal is not type str as required.')
         # return the results
-        return returnVal
+        return [returnVal]
     def status(self, ctx):
         #BEGIN_STATUS
         returnVal = {'state': "OK",
