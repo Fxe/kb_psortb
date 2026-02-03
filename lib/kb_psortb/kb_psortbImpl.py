@@ -26,16 +26,13 @@ class kb_psortb:
     ######################################### noqa
     VERSION = "0.0.1"
     GIT_URL = "git@github.com:Fxe/kb_psortb.git"
-    GIT_COMMIT_HASH = "8187268330e6a80ce04d4d9a06275552070e1480"
+    GIT_COMMIT_HASH = "e4fe297023861033f71d79a92a4eb504058e494e"
 
     #BEGIN_CLASS_HEADER
 
     def annotate_proteins(self, ctx, params):
 
-        print(ctx)
-        print(params)
 
-        print("hello ?")
 
         return params
 
@@ -138,6 +135,30 @@ class kb_psortb:
                              'output is not type dict as required.')
         # return the results
         return [output]
+
+    def annotate_proteins(self, ctx, proteins):
+        """
+        :param proteins: instance of mapping from String to String
+        :returns: instance of String
+        """
+        # ctx is the context object
+        # return variables are: returnVal
+        #BEGIN annotate_proteins
+
+        print(ctx)
+        print(proteins)
+
+        returnVal = "hello ?"
+        print(returnVal)
+
+        #END annotate_proteins
+
+        # At some point might do deeper type checking...
+        if not isinstance(returnVal, str):
+            raise ValueError('Method annotate_proteins return value ' +
+                             'returnVal is not type str as required.')
+        # return the results
+        return returnVal
     def status(self, ctx):
         #BEGIN_STATUS
         returnVal = {'state': "OK",
