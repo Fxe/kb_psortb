@@ -26,9 +26,19 @@ class kb_psortb:
     ######################################### noqa
     VERSION = "0.0.1"
     GIT_URL = "git@github.com:Fxe/kb_psortb.git"
-    GIT_COMMIT_HASH = "e8ca60b63e1d9b0800a1f31d96fce7a6d692c2df"
+    GIT_COMMIT_HASH = "8187268330e6a80ce04d4d9a06275552070e1480"
 
     #BEGIN_CLASS_HEADER
+
+    def annotate_proteins(self, ctx, params):
+
+        print(ctx)
+        print(params)
+
+        print("hello ?")
+
+        return params
+
     #END_CLASS_HEADER
 
     # config contains contents of config file in a hash or None if it couldn't

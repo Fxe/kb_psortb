@@ -1,0 +1,16 @@
+{
+    "name" : "Annotate Proteins",
+    "short_description" : "Annotate Proteins",
+    "long_description" : "Annotate Proteins",
+    "tags" : {
+        "categories" : ["annotation"],
+        "input": {
+            "file_types": [],
+            "kb_types": []
+        },
+        "output": {
+            "file_types": [],
+            "kb_types": []
+        }
+    }
+}
